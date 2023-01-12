@@ -4,7 +4,7 @@
 version: '3.3'
 services:
   db:
-    image: arm64v8/mysql
+    image: arm64v8/mysql:latest
     volumes:
       - db_data:/var/lib/mysql
     restart: always
@@ -17,7 +17,7 @@ services:
   wordpress:
     depends_on:
       - db
-    image: arm64v8/wordpress
+    image: arm64v8/wordpress:php8.2-fpm
     ports:
       - "80:80"
       - "443:443"

@@ -4,7 +4,7 @@
 version: '3.3'
 services:
   db:
-    image: mysql:5.7
+    image: arm64v8/mysql
     volumes:
       - db_data:/var/lib/mysql
     restart: always
@@ -17,7 +17,7 @@ services:
   wordpress:
     depends_on:
       - db
-    image: wordpress:latest
+    image: arm64v8/wordpress
     ports:
       - "80:80"
       - "443:443"
@@ -33,7 +33,7 @@ services:
     depends_on:
       - db
       - wordpress
-    image: wordpress:cli
+    image: arm64v8/wordpress:cli-php8.2
     user: xfs
     command: >
       /bin/sh -c '
